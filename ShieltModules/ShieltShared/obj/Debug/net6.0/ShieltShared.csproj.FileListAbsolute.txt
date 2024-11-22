@@ -1,0 +1,13 @@
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\bin\Debug\net6.0\ShieltShared.deps.json
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\bin\Debug\net6.0\ShieltShared.dll
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\bin\Debug\net6.0\ShieltShared.pdb
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ShieltShared.csproj.AssemblyReference.cache
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ShieltShared.GeneratedMSBuildEditorConfig.editorconfig
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ShieltShared.AssemblyInfoInputs.cache
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ShieltShared.AssemblyInfo.cs
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ShieltShared.csproj.CoreCompileInputs.cache
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ShieltShared.sourcelink.json
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ShieltShared.dll
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\refint\ShieltShared.dll
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ShieltShared.pdb
+E:\UnityProjects\Shielt\ShieltModules\ShieltShared\obj\Debug\net6.0\ref\ShieltShared.dll
