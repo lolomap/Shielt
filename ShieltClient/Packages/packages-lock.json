@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "0d0e4af9c79d63224ae26f1a3e822300b1475da7"
     },
+    "com.neurotech.emstartifacts": {
+      "version": "https://github.com/BrainbitLLC/unity_em_st_artifacts.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fe78b88156a1c6a3c7dbac09897cdc9cb81ee7db"
+    },
     "com.neurotech.neurosdk2": {
       "version": "https://github.com/BrainbitLLC/unity_neurosdk2.git",
       "depth": 0,
