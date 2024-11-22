@@ -1,6 +1,7 @@
 using SignalMath;
 using System;
 using System.Collections;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,8 @@ public class EmotionalPage : MonoBehaviour
     private readonly object locker = new object();
     private EmotionsController _emotionController;
     private IEnumerator _updateEmotionalCoroutine;
+    private int sumRelAtt = 0;
+    private int count = 0;
 
     private bool _started = false;
     private bool started
@@ -36,10 +39,15 @@ public class EmotionalPage : MonoBehaviour
 
     private IEnumerator UpdateValues()
     {
+        
         while (true)
         {
             lock (locker)
             {
+                sumRelAtt += (int)_data.InstAttention - (int)_data.InstRelaxation;
+                count++;
+                Debug.Log($"Attention percentage: {MathF.Round((float)_data.RelAttention)}%");
+                Debug.Log($"Relax percentage: {MathF.Round((float)_data.RelRelaxation, 2)}%)");
                 /*_attentionPercentText.text = $"{MathF.Round((float)_data.RelAttention, 2)}%";
                 _relaxPercentText.text = $"{MathF.Round((float)_data.RelRelaxation, 2)}%";
                 _attentionRawText.text = $"{MathF.Round((float)_data.InstAttention, 2)}";
@@ -68,11 +76,14 @@ public class EmotionalPage : MonoBehaviour
         else
         {
             _emotionController.StartCalibration();
+            Debug.Log("Calibration finished");
             BrainBitController.Instance.StartSignal((samples) => {
                 _emotionController.ProcessData(samples);
             });
         }
         started = !started;
+        sumRelAtt = sumRelAtt / count;
+        Debug.Log($"{sumRelAtt}");
     }
 
     private void calibrationCallback(int progress)
@@ -137,6 +148,7 @@ public class EmotionalPage : MonoBehaviour
         }
         StopCoroutine(_updateEmotionalCoroutine);
         BrainBitController.Instance.StopSignal();
+        
         _data.RelAttention = 0;
         _data.RelRelaxation = 0;
         _data.InstAttention = 0;

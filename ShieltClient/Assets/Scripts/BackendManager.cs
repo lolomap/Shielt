@@ -28,18 +28,18 @@ public class BackendManager : MonoBehaviour
     {
     }
 
-    public void ToSearchPage()
+    /*public void ToSearchPage()
     {
         _deviceSearchScreen.gameObject.SetActive(true);
-    }
+    }*/
 
-    public void ToMenuPage()
+    /*public void ToMenuPage()
     {
         _mainMenuScreen?.SetActive(true);
         _deviceSearchScreen?.SetActive(false);
-    }
+    }*/
 
-    public void ToDeviceInfoPage() 
+    /*public void ToDeviceInfoPage() 
     {
         _deviceInfoScreen.SetActive(true);
     }
@@ -56,7 +56,7 @@ public class BackendManager : MonoBehaviour
     public void ToEmotionalPage()
     {
         _emotionalScreen.SetActive(true);
-    }
+    }*/
 
 
 }

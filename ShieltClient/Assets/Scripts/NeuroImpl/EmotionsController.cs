@@ -1,6 +1,7 @@
 using NeuroSDK;
 using SignalMath;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 public class EmotionsController
@@ -40,6 +41,7 @@ public class EmotionsController
 
     public void StartCalibration() 
     {
+        Console.WriteLine("Calibration started");
         if(!_math.CalibrationFinished())
             _math.StartCalibration(); 
     }
