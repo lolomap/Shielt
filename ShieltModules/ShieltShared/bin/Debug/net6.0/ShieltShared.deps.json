@@ -1,0 +1,92 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ShieltShared/1.0.0": {
+        "dependencies": {
+          "ENet": "1.3.6.3",
+          "Serilog": "4.1.0",
+          "Serilog.Sinks.Console": "6.0.0",
+          "StructPacker": "1.0.8"
+        },
+        "runtime": {
+          "ShieltShared.dll": {}
+        }
+      },
+      "ENet/1.3.6.3": {
+        "runtime": {
+          "lib/ENet.dll": {
+            "assemblyVersion": "1.3.6.3",
+            "fileVersion": "1.3.6.3"
+          }
+        }
+      },
+      "Serilog/4.1.0": {
+        "runtime": {
+          "lib/net6.0/Serilog.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "Serilog.Sinks.Console/6.0.0": {
+        "dependencies": {
+          "Serilog": "4.1.0"
+        },
+        "runtime": {
+          "lib/net6.0/Serilog.Sinks.Console.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "StructPacker/1.0.8": {
+        "runtime": {
+          "lib/netstandard1.0/RudolfKurka.StructPackerTools.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ShieltShared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ENet/1.3.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NbXa8OwW3RdBPmo3GAtOubO+2FWsXE/U7PjJ6Y59AUdkBnwCUCrjhRy8uaH08Mu0c0+kLKoml31OEYdaxyiY+A==",
+      "path": "enet/1.3.6.3",
+      "hashPath": "enet.1.3.6.3.nupkg.sha512"
+    },
+    "Serilog/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u1aZI8HZ62LWlq5dZLFwm6jMax/sUwnWZSw5lkPsCt518cJBxFKoNmc7oSxe5aA5BgSkzy9rzwFGR/i/acnSPw==",
+      "path": "serilog/4.1.0",
+      "hashPath": "serilog.4.1.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.Console/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fQGWqVMClCP2yEyTXPIinSr5c+CBGUvBybPxjAGcf7ctDhadFhrQw03Mv8rJ07/wR5PDfFjewf2LimvXCDzpbA==",
+      "path": "serilog.sinks.console/6.0.0",
+      "hashPath": "serilog.sinks.console.6.0.0.nupkg.sha512"
+    },
+    "StructPacker/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bqsWcFZbqAl9mm54XmVWl0aNDhu3e0e3LG/sAno62XQdOo5/qKd2vu0KjGLUWeSfwyM0mr0QrsBMwjdS6owoUQ==",
+      "path": "structpacker/1.0.8",
+      "hashPath": "structpacker.1.0.8.nupkg.sha512"
+    }
+  }
+}
