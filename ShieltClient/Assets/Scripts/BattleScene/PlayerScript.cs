@@ -5,6 +5,7 @@ using UnityEngine;
 
 public interface IPlayerActions
 {
+    public void Idle();
     public void Attack();
     public void PowerAttack();
     public void Defend();
@@ -24,6 +25,11 @@ public class PlayerScript : MonoBehaviour, IPlayerActions
     void Update()
     {
 
+    }
+
+    public void Idle()
+    {
+        animator.SetTrigger("idle");
     }
     public void Attack()
     {
