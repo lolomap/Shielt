@@ -66,7 +66,7 @@ public class Network : MonoBehaviour
 	{
 		PlayerActionCtS info = new() {IsDefend = isDefend, Value = value};
 		byte[] data = PacketManager.Pack(info);
-		if (info.IsDefend)
+		if (info.IsDefend && info.Value != 0)
 		{
 			Debug.Log("tcfyguijuyt");
 		}
