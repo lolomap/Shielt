@@ -70,7 +70,6 @@
     <Compile Include="Assets\Modern UI Pack\Scripts\UI Manager\UIManagerEditor.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Notification\NotificationManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-    <Compile Include="Assets\Scripts\HpBarManager.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\UI Manager\UIManagerSwitch.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Demo\DemoElementSway.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -123,6 +122,7 @@
     <Compile Include="Assets\Modern UI Pack\Scripts\Demo\DemoElementSwayParent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Icon\AnimatedIconHandler.cs" />
+    <Compile Include="Assets\Scripts\SceneManager.cs" />
     <Compile Include="Assets\Scripts\ForUI\EmotionalMathConfig.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Horizontal Selector\HorizontalSelector.cs" />
     <Compile Include="Assets\Scripts\DeviceTab.cs" />
@@ -131,6 +131,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Modal Window\ModalWindowManager.cs" />
+    <Compile Include="Assets\Scripts\BattleScene\BattleScene.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Demo\InputSystemChecker.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Dropdown\DropdownMultiSelectEditor.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\ListView\ListView.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Assets\Modern UI Pack\Scripts\Window\WindowManagerEditor.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\UI Manager\UIManagerNotification.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Icon\IconLibrary.cs" />
+    <Compile Include="Assets\Scripts\BattleScene\HpBarManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\UI Manager\UIManagerTooltip.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Tooltip\TooltipManager.cs" />

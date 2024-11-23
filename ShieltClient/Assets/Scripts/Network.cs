@@ -8,6 +8,11 @@ using Packet = ShieltShared.Packet;
 public class Network : MonoBehaviour
 {
 	public static Network Instance;
+
+
+	public delegate void HealthChangedEventHandler(int health1, int health2);
+
+	public static event HealthChangedEventHandler HealthChanged;
 	
 	private void Awake()
 	{
@@ -42,6 +47,9 @@ public class Network : MonoBehaviour
 
 				Debug.Log("PL1: "+payload.Player1Health.ToString());
 				Debug.Log("PL2: "+payload.Player2Health.ToString());
+				
+				HealthChanged?.Invoke(payload.Player1Health, payload.Player2Health);
+				
 				break;
 			}
 		}
