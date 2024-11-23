@@ -6,7 +6,9 @@ using UnityEngine;
 public interface IPlayerActions
 {
     public void Attack();
+    public void PowerAttack();
     public void Defend();
+    public void PowerDefend();
     public void Die();
 }
 
@@ -31,5 +33,15 @@ public class PlayerScript : MonoBehaviour, IPlayerActions
     public void Die()
     {
         animator.SetTrigger("die");
+    }
+
+    public void PowerAttack()
+    {
+        animator.SetTrigger("powerAttack");
+    }
+
+    public void PowerDefend()
+    {
+        animator.SetTrigger("powerDefend");
     }
 }
