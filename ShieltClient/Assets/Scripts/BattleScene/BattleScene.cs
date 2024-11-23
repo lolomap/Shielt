@@ -6,7 +6,7 @@ namespace BattleScene
    {
       public HpBarManager HealthBar1, HealthBar2;
       
-      private void Awake()
+      private void Start()
       {
          EmotionalPage.Instance.StartScanning();
          
