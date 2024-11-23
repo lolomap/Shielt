@@ -17,8 +17,6 @@ public class PlayerScript : MonoBehaviour, IPlayerActions
     void Start()
     {
         animator = GetComponent<Animator>();
-
-        this.Die();
     }
     public void Attack()
     {
