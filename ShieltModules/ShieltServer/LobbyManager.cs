@@ -21,9 +21,9 @@ public class LobbyManager
 		ENetManager.PacketRecieved += OnPacketRecieved;
 		ENetManager.Disconnected += peer =>
 		{
-			if (ENetManager.PeerEquals((_player1.Connection ?? default), peer))
+			if (_player1.Connection != null && ENetManager.PeerEquals((_player1.Connection.Value), peer))
 				_player1.Connection = null;
-			if (ENetManager.PeerEquals((_player2.Connection ?? default), peer))
+			if (_player2.Connection != null && ENetManager.PeerEquals((_player2.Connection.Value), peer))
 				_player2.Connection = null;
 		};
 	}
@@ -84,8 +84,12 @@ public class LobbyManager
 		if (_player2.LastAction.Value.IsDefend) player2Defend = _player2.LastAction.Value.Value;
 		else player2Attack = _player2.LastAction.Value.Value;
 
-		_player1.Health -= Math.Clamp(player2Attack - player1Defend, 0, 100) / 10;
-		_player2.Health -= Math.Clamp(player1Attack - player2Defend, 0, 100) / 10;
+		//_player1.Health -= Math.Clamp(player2Attack - player1Defend, 0, 100);
+		//_player2.Health -= Math.Clamp(player1Attack - player2Defend, 0, 100);
+		Console.WriteLine("PL1:" + (player1Defend == 0 ? "AT" : "DEF") + _player1.LastAction.Value.Value);
+		Console.WriteLine("PL2:" + (player1Defend == 0 ? "AT" : "DEF") + _player2.LastAction.Value.Value);
+		if (player1Defend < player2Attack) _player1.Health -= player2Attack - player1Defend;
+		if (player2Defend < player1Attack) _player2.Health -= player1Attack - player2Defend;
 
 		_player1.Health = Math.Clamp(_player1.Health, 0, 100);
 		_player2.Health = Math.Clamp(_player2.Health, 0, 100);
@@ -96,8 +100,8 @@ public class LobbyManager
 		PlayersInfoStC playerInfo;
 		playerInfo.Player1Health = _player1.Health;
 		playerInfo.Player2Health = _player2.Health;
-		playerInfo.Player1IsDefend = player1Attack > 0;
-		playerInfo.Player2IsDefend = player2Attack > 0;
+		playerInfo.Player1IsDefend = player1Defend > 0;
+		playerInfo.Player2IsDefend = player2Defend > 0;
 		byte[] data = PacketManager.Pack(playerInfo);
 		ENetManager.Broadcast(0, data, PacketFlags.Reliable);
 	}

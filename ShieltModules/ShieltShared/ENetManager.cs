@@ -129,14 +129,16 @@ namespace ShieltShared
 
 		public static void Dispose()
 		{
-			if (!IsServer && IsConnected) Server.DisconnectLater(0);
+			if (!IsServer && IsConnected)
+			{
+				IsInited = false;
+				IsConnected = false;
+				IsReady = false;
+				IsServer = false;
+				Server.DisconnectLater(0);
+			}
 			_host.Flush();
 			_host.Dispose();
-
-			IsInited = false;
-			IsConnected = false;
-			IsReady = false;
-			IsServer = false;
 		}
 	}
 }
