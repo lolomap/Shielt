@@ -96,6 +96,8 @@ public class LobbyManager
 		PlayersInfoStC playerInfo;
 		playerInfo.Player1Health = _player1.Health;
 		playerInfo.Player2Health = _player2.Health;
+		playerInfo.Player1IsDefend = player1Attack > 0;
+		playerInfo.Player2IsDefend = player2Attack > 0;
 		byte[] data = PacketManager.Pack(playerInfo);
 		ENetManager.Broadcast(0, data, PacketFlags.Reliable);
 	}

@@ -15,5 +15,7 @@ namespace ShieltShared
 
 		public int Player1Health;
 		public int Player2Health;
+		public bool Player1IsDefend;
+		public bool Player2IsDefend;
 	}
 }
