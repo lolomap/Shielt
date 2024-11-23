@@ -19,8 +19,8 @@ public class EmotionalPage : MonoBehaviour
     private readonly object locker = new object();
     private EmotionsController _emotionController;
     private IEnumerator _updateEmotionalCoroutine;
-    private int min = 0;
-    private int max = 0;
+    private int maxRelax = 0;
+    private int maxAttention = 0;
     private bool _scanning = false;
     [SerializeField] private TMP_Text messageToPlayers;
 
@@ -56,8 +56,8 @@ public class EmotionalPage : MonoBehaviour
                     //sumRelAtt += (int) _data.InstAttention - (int) _data.InstRelaxation;
                     //count++;
 
-                    if (_data.InstRelaxation > min) { min = (int)_data.InstRelaxation; }
-                    if (_data.InstAttention > max) {  max = (int)_data.InstAttention; }
+                    if (_data.RelRelaxation > maxRelax) { maxRelax = (int)_data.RelRelaxation; }
+                    if (_data.RelAttention > maxAttention) {  maxAttention = (int)_data.RelAttention; }
 
                 }
             }
@@ -78,12 +78,12 @@ public class EmotionalPage : MonoBehaviour
             
             yield return new WaitForSeconds(5);
 
-            int res = Math.Max(min, max) / 2;
+            int res = Math.Max(maxRelax, maxAttention) / 2;
             Debug.Log($"{res}");
             
             Network.Instance.RequestAction(res);
-            min = 0;
-            max = 0;
+            maxRelax = 0;
+            maxAttention = 0;
         }
     }
 
