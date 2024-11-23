@@ -82,8 +82,12 @@ public class EmotionalPage : MonoBehaviour
         {
            
             messageToPlayers.text = "Let's get started";
+            BrainBitController.Instance.StopSignal();
             yield return new WaitForSeconds(3);
             messageToPlayers.text = "Focus or attention";
+            BrainBitController.Instance.StartSignal((samples) => {
+                _emotionController.ProcessData(samples);
+            });
             yield return new WaitForSeconds(5);
             sumRelAtt /= count;
             //Debug.Log($"{sumRelAtt}");
