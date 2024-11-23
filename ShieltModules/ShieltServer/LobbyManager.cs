@@ -78,13 +78,12 @@ public class LobbyManager
 			_player2.Connection = peer;
 			_player2.Nickname = info.Nickname;
 			
-			PlayersInfoStC playerInfo;
+			PlayersInfoStC playerInfo = default;
 			playerInfo.Player1Health = _player1.Health;
 			playerInfo.Player2Health = _player2.Health;
-			playerInfo.Player1IsDefend = false;
-			playerInfo.Player2IsDefend = false;
 			playerInfo.Player1Nickname = _player1.Nickname;
 			playerInfo.Player2Nickname = _player2.Nickname;
+			
 			byte[] data = PacketManager.Pack(playerInfo);
 			ENetManager.Broadcast(0, data, PacketFlags.Reliable);
 		}
@@ -121,8 +120,26 @@ public class LobbyManager
 		//_player2.Health -= Math.Clamp(player1Attack - player2Defend, 0, 100);
 		Console.WriteLine("PL1:" + (player1Defend == 0 ? "AT" : "DEF") + _player1.LastAction.Value.Value);
 		Console.WriteLine("PL2:" + (player2Defend == 0 ? "AT" : "DEF") + _player2.LastAction.Value.Value);
-		if (player1Defend < player2Attack) _player1.Health -= player2Attack - player1Defend;
-		if (player2Defend < player1Attack) _player2.Health -= player1Attack - player2Defend;
+
+		bool pl1PowAt = player1Attack > 40;
+		bool pl2PowAt = player2Attack > 40;
+		bool pl1PowDef = player1Defend > 40;
+		bool pl2PowDef = player2Defend > 40;
+
+		int pl1IncomeDamage = player2Attack;
+		int pl2IncomeDamage = player2Attack;
+
+		if (!pl1PowAt) pl2IncomeDamage -= player2Defend;
+		if (!pl2PowAt) pl1IncomeDamage -= player1Defend;
+
+		if (pl1PowDef) pl2IncomeDamage += player2Defend - player1Attack; 
+		if (pl2PowDef) pl1IncomeDamage += player1Defend - player2Attack; 
+		
+		if (!(pl1PowAt && pl2PowDef || pl2PowAt && pl1PowDef))
+		{
+			_player1.Health -= pl1IncomeDamage;
+			_player2.Health -= pl2IncomeDamage;
+		}
 
 		_player1.Health = Math.Clamp(_player1.Health, 0, 100);
 		_player2.Health = Math.Clamp(_player2.Health, 0, 100);
@@ -137,6 +154,8 @@ public class LobbyManager
 		playerInfo.Player2IsDefend = player2Defend > 0;
 		playerInfo.Player1Nickname = _player1.Nickname;
 		playerInfo.Player2Nickname = _player2.Nickname;
+		playerInfo.Player1IsPowered = pl1PowAt || pl1PowDef;
+		playerInfo.Player2IsPowered = pl2PowAt || pl2PowDef;
 		byte[] data = PacketManager.Pack(playerInfo);
 		ENetManager.Broadcast(0, data, PacketFlags.Reliable);
 	}
