@@ -78,10 +78,11 @@ public class EmotionalPage : MonoBehaviour
             
             yield return new WaitForSeconds(5);
 
-            int res = Math.Max(maxRelax, maxAttention) / 2;
+            int value = Math.Max(maxRelax, maxAttention);
+            int res = value / 2;
             Debug.Log($"{res}");
             
-            Network.Instance.RequestAction(res);
+            Network.Instance.RequestAction(res, value == maxRelax);
             maxRelax = 0;
             maxAttention = 0;
         }
