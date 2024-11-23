@@ -429,7 +429,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1910068980}
   m_HandleRect: {fileID: 1910068979}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1679,6 +1679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1172616054}
   - component: {fileID: 1172616055}
+  - component: {fileID: 1172616056}
   m_Layer: 5
   m_Name: Scan
   m_TagString: Untagged
@@ -1718,6 +1719,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e8060355c366c4785d027752c7d34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1172616056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172616053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bbf83e12a2f2149940a416d940ade7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
 --- !u!1 &1362066372
 GameObject:
   m_ObjectHideFlags: 0
