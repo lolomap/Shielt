@@ -80,9 +80,10 @@ public class EmotionalPage : MonoBehaviour
 
             int value = Math.Max(maxRelax, maxAttention);
             int res = value / 2;
-            Debug.Log($"{res}");
+            bool isDef = value == maxRelax;
+            Debug.Log((isDef ? "DEF " : "ATK ") + $"{res}");
             
-            Network.Instance.RequestAction(res, value == maxRelax);
+            Network.Instance.RequestAction(res, isDef);
             maxRelax = 0;
             maxAttention = 0;
         }

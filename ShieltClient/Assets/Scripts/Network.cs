@@ -64,7 +64,7 @@ public class Network : MonoBehaviour
 
 	public void RequestAction(int value, bool isDefend)
 	{
-		PlayerActionCtS info = new() {IsDefend = isDefend, Value = Math.Abs(value)};
+		PlayerActionCtS info = new() {IsDefend = isDefend, Value = value};
 		byte[] data = PacketManager.Pack(info);
 		
 		ENetManager.Server.Send(0, data, PacketFlags.Reliable);
