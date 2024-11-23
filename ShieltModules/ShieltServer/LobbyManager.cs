@@ -46,12 +46,17 @@ public class LobbyManager
 
 	private void OnConnection(Peer peer)
 	{
+		if (_player1.Connection != null && _player2.Connection != null)
+		{
+			Console.WriteLine("Third player tried to connect!");
+			peer.DisconnectLater(0);
+		}
+		
 		if (_player1.Connection == null) {_player1.Connection = peer; return;}
 
 		_player2.Connection ??= peer;
+
 		
-		Console.WriteLine("Third player tried to connect!");
-		peer.DisconnectLater(0);
 	}
 
 	private void OnPlayerAction(PlayerActionCtS action, Peer peer)
