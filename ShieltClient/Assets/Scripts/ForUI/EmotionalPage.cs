@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class EmotionalPage : MonoBehaviour
 {
-    
+    public static EmotionalPage Instance;
 
     private MindData _data;
     private bool _artSequence;
@@ -35,6 +35,11 @@ public class EmotionalPage : MonoBehaviour
             }
 
         }
+    }
+
+    private void Awake()
+    {
+        Instance = this;
     }
 
     private IEnumerator UpdateValues()
@@ -75,7 +80,8 @@ public class EmotionalPage : MonoBehaviour
         {
             yield return new WaitForSeconds(5);
             sumRelAtt /= count;
-            Debug.Log($"{sumRelAtt}");
+            //Debug.Log($"{sumRelAtt}");
+            
             Network.Instance.RequestAction(sumRelAtt);
             sumRelAtt = 0;
             count = 0;
