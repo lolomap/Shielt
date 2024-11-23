@@ -19,6 +19,13 @@ public class LobbyManager
 	public LobbyManager()
 	{
 		ENetManager.PacketRecieved += OnPacketRecieved;
+		ENetManager.Disconnected += peer =>
+		{
+			if (ENetManager.PeerEquals((_player1.Connection ?? default), peer))
+				_player1.Connection = null;
+			if (ENetManager.PeerEquals((_player2.Connection ?? default), peer))
+				_player2.Connection = null;
+		};
 	}
 
 	public void Dispose()
@@ -77,9 +84,12 @@ public class LobbyManager
 		if (_player2.LastAction.Value.IsDefend) player2Defend = _player2.LastAction.Value.Value;
 		else player2Attack = _player2.LastAction.Value.Value;
 
-		_player1.Health -= Math.Clamp(player2Attack - player1Defend, 0, 100);
-		_player2.Health -= Math.Clamp(player1Attack - player2Defend, 0, 100);
+		_player1.Health -= Math.Clamp(player2Attack - player1Defend, 0, 100) / 10;
+		_player2.Health -= Math.Clamp(player1Attack - player2Defend, 0, 100) / 10;
 
+		_player1.Health = Math.Clamp(_player1.Health, 0, 100);
+		_player2.Health = Math.Clamp(_player2.Health, 0, 100);
+		
 		_player1.LastAction = null;
 		_player2.LastAction = null;
 
