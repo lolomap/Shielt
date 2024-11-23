@@ -25,6 +25,6 @@ namespace ShieltShared
 		public byte[] PackReflection() => this.Pack();
 		public void UnpackReflection(byte[] data) => this.Unpack(data);
 
-		public byte Dummy;
+		public string Nickname;
 	}
 }

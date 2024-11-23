@@ -6,7 +6,8 @@ using Packet = ShieltShared.Packet;
 public class Player
 {
 	public Peer? Connection;
-	
+
+	public string Nickname;
 	public int Health = 100;
 	public PlayerActionCtS? LastAction;
 }
@@ -49,7 +50,7 @@ public class LobbyManager
 		switch (packet.TypeId)
 		{
 			case ConnectionRequestCtS.TYPE_ID:
-				OnConnection(peer);
+				OnConnection(PacketManager.UnpackPayload<ConnectionRequestCtS>(packet), peer);
 				break;
 			case PlayerActionCtS.TYPE_ID:
 				OnPlayerAction(PacketManager.UnpackPayload<PlayerActionCtS>(packet), peer);
@@ -57,17 +58,36 @@ public class LobbyManager
 		}
 	}
 
-	private void OnConnection(Peer peer)
+	private void OnConnection(ConnectionRequestCtS info, Peer peer)
 	{
 		if (_player1.Connection != null && _player2.Connection != null)
 		{
 			Console.WriteLine("Third player tried to connect!");
 			peer.DisconnectLater(0);
 		}
-		
-		if (_player1.Connection == null) {_player1.Connection = peer; return;}
 
-		_player2.Connection ??= peer;
+		if (_player1.Connection == null)
+		{
+			_player1.Connection = peer;
+			_player1.Nickname = info.Nickname;
+			return;
+		}
+
+		if (_player2.Connection == null)
+		{
+			_player2.Connection = peer;
+			_player2.Nickname = info.Nickname;
+			
+			PlayersInfoStC playerInfo;
+			playerInfo.Player1Health = _player1.Health;
+			playerInfo.Player2Health = _player2.Health;
+			playerInfo.Player1IsDefend = false;
+			playerInfo.Player2IsDefend = false;
+			playerInfo.Player1Nickname = _player1.Nickname;
+			playerInfo.Player2Nickname = _player2.Nickname;
+			byte[] data = PacketManager.Pack(playerInfo);
+			ENetManager.Broadcast(0, data, PacketFlags.Reliable);
+		}
 
 		
 	}
@@ -115,6 +135,8 @@ public class LobbyManager
 		playerInfo.Player2Health = _player2.Health;
 		playerInfo.Player1IsDefend = player1Defend > 0;
 		playerInfo.Player2IsDefend = player2Defend > 0;
+		playerInfo.Player1Nickname = _player1.Nickname;
+		playerInfo.Player2Nickname = _player2.Nickname;
 		byte[] data = PacketManager.Pack(playerInfo);
 		ENetManager.Broadcast(0, data, PacketFlags.Reliable);
 	}

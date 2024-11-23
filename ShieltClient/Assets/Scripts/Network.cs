@@ -9,7 +9,9 @@ public class Network : MonoBehaviour
 {
 	public static Network Instance;
 
-
+	private bool _isColletedInfo;
+	public static string SelfNickname, EnemyNickname;
+    
 	public delegate void UpdatePlayersEventHandler(PlayersInfoStC players);
 
 	public static event UpdatePlayersEventHandler UpdatePlayers;
@@ -45,10 +47,17 @@ public class Network : MonoBehaviour
 			{
 				PlayersInfoStC payload = PacketManager.UnpackPayload<PlayersInfoStC>(packet);
 
-				Debug.Log("PL1: "+payload.Player1Health);
-				Debug.Log("PL2: "+payload.Player2Health);
+				Debug.Log("PL1 HP: "+payload.Player1Health);
+				Debug.Log("PL2 HP: "+payload.Player2Health);
 				
-				UpdatePlayers?.Invoke(payload);
+				if (Instance._isColletedInfo)
+					UpdatePlayers?.Invoke(payload);
+				else
+				{
+					SelfNickname = payload.Player1Nickname != SelfNickname ? payload.Player1Nickname : payload.Player2Nickname;
+
+					Instance._isColletedInfo = true;
+				}
 				
 				break;
 			}
@@ -66,10 +75,6 @@ public class Network : MonoBehaviour
 	{
 		PlayerActionCtS info = new() {IsDefend = isDefend, Value = value};
 		byte[] data = PacketManager.Pack(info);
-		if (info.IsDefend && info.Value != 0)
-		{
-			Debug.Log("tcfyguijuyt");
-		}
 		
 		ENetManager.Server.Send(0, data, PacketFlags.Reliable);
 	}
