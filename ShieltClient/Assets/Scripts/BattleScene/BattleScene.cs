@@ -11,6 +11,8 @@ namespace BattleScene
 		public PlayerScript Player1, Player2;
 		public TMP_Text WinnerText;
 		public GameObject EndRoundPanel;
+		public TMP_Text Nick1Text, Nick2Text;
+		
 		private void Start()
 		{
             Network.Instance.Connect();
@@ -21,7 +23,10 @@ namespace BattleScene
 				HealthBar1.SetHp(players.Player1Health);
 				HealthBar2.SetHp(players.Player2Health);
 
-                String Winner = "";
+				Nick1Text.text = players.Player1Nickname;
+				Nick2Text.text = players.Player2Nickname;
+
+                string Winner = "";
                 bool isFinish = false;
 				if (players.Player1Health <= 0)
 				{

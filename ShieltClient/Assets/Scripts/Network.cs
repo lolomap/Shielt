@@ -11,6 +11,7 @@ public class Network : MonoBehaviour
 
 	private bool _isColletedInfo;
 	public static string SelfNickname, EnemyNickname;
+	public static void SetSelfNickname(string value) => SelfNickname = value; 
     
 	public delegate void UpdatePlayersEventHandler(PlayersInfoStC players);
 
@@ -66,7 +67,7 @@ public class Network : MonoBehaviour
 
 	private static void OnPlayerConnected()
 	{
-		ConnectionRequestCtS info = new();
+		ConnectionRequestCtS info = new() {Nickname = SelfNickname};
 		byte[] data = PacketManager.Pack(info);
 		ENetManager.Server.Send(0, data, PacketFlags.None);
 	}
