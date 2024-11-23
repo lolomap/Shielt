@@ -73,6 +73,7 @@
     <Compile Include="Assets\Modern UI Pack\Scripts\UI Manager\UIManagerEditor.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Notification\NotificationManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\Scripts\HpBarManager.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\UI Manager\UIManagerSwitch.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Demo\DemoElementSway.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
