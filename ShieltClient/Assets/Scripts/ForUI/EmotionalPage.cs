@@ -69,7 +69,7 @@ public class EmotionalPage : MonoBehaviour
             _scanning = false;
             messageToPlayers.text = "Let's get started";
             yield return new WaitForSeconds(3);
-            messageToPlayers.text = "Focus or attention";
+            messageToPlayers.text = "Relax or attention";
             _scanning = true;
             
             yield return new WaitForSeconds(5);
