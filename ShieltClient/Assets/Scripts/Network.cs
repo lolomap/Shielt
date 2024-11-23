@@ -27,7 +27,7 @@ public class Network : MonoBehaviour
 
 	public void Connect()
 	{
-		ENetManager.Connect(new(IPAddress.Parse("127.0.0.1"), 7777));
+		ENetManager.Connect(new(IPAddress.Parse("192.168.39.134"), 7777));
 		
 		//return ENetManager.IsReady;
 	}
