@@ -21,6 +21,7 @@ public class EmotionalPage : MonoBehaviour
     private IEnumerator _updateEmotionalCoroutine;
     private int sumRelAtt = 0;
     private int count = 0;
+    [SerializeField] private TMP_Text messageToPlayers;
 
     private bool _started = false;
     private bool started
@@ -74,10 +75,19 @@ public class EmotionalPage : MonoBehaviour
         }
     }
 
+
     private IEnumerator RangeUpdate()
     {
         while (started)
         {
+           
+            messageToPlayers.text = "Let's get started";
+            BrainBitController.Instance.StopSignal();
+            yield return new WaitForSeconds(3);
+            messageToPlayers.text = "Focus or attention";
+            BrainBitController.Instance.StartSignal((samples) => {
+                _emotionController.ProcessData(samples);
+            });
             yield return new WaitForSeconds(5);
             sumRelAtt /= count;
             //Debug.Log($"{sumRelAtt}");
