@@ -66,6 +66,10 @@ public class Network : MonoBehaviour
 	{
 		PlayerActionCtS info = new() {IsDefend = isDefend, Value = value};
 		byte[] data = PacketManager.Pack(info);
+		if (info.IsDefend)
+		{
+			Debug.Log("tcfyguijuyt");
+		}
 		
 		ENetManager.Server.Send(0, data, PacketFlags.Reliable);
 	}

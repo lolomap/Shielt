@@ -34,8 +34,12 @@ namespace BattleScene
                // MODAL
             }
             
-            if (players.Player1IsDefend) Player1.Defend(); else Player1.Attack();
-            if (players.Player2IsDefend) Player2.Defend(); else Player2.Attack();
+            if (players.Player1IsDefend)
+                 Player1.Defend(); 
+             else Player1.Attack();
+            if (players.Player2IsDefend)
+                 Player2.Defend(); 
+             else Player2.Attack();
          };
          
       }
