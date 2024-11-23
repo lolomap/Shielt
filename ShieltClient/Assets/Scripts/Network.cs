@@ -10,9 +10,9 @@ public class Network : MonoBehaviour
 	public static Network Instance;
 
 
-	public delegate void HealthChangedEventHandler(int health1, int health2);
+	public delegate void UpdatePlayersEventHandler(PlayersInfoStC players);
 
-	public static event HealthChangedEventHandler HealthChanged;
+	public static event UpdatePlayersEventHandler UpdatePlayers;
 	
 	private void Awake()
 	{
@@ -45,10 +45,10 @@ public class Network : MonoBehaviour
 			{
 				PlayersInfoStC payload = PacketManager.UnpackPayload<PlayersInfoStC>(packet);
 
-				Debug.Log("PL1: "+payload.Player1Health.ToString());
-				Debug.Log("PL2: "+payload.Player2Health.ToString());
+				Debug.Log("PL1: "+payload.Player1Health);
+				Debug.Log("PL2: "+payload.Player2Health);
 				
-				HealthChanged?.Invoke(payload.Player1Health, payload.Player2Health);
+				UpdatePlayers?.Invoke(payload);
 				
 				break;
 			}

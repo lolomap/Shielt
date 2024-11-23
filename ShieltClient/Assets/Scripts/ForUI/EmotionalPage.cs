@@ -21,6 +21,7 @@ public class EmotionalPage : MonoBehaviour
     private IEnumerator _updateEmotionalCoroutine;
     private int sumRelAtt = 0;
     private int count = 0;
+    private bool _scanning = false;
     [SerializeField] private TMP_Text messageToPlayers;
 
     private bool _started = false;
@@ -50,26 +51,11 @@ public class EmotionalPage : MonoBehaviour
         {
             lock (locker)
             {
-                sumRelAtt += (int)_data.InstAttention - (int)_data.InstRelaxation;
-                count++;
-                //Debug.Log($"Attention percentage: {MathF.Round((float)_data.RelAttention)}%");
-                //Debug.Log($"Relax percentage: {MathF.Round((float)_data.RelRelaxation, 2)}%)");
-                
-                
-                /*_attentionPercentText.text = $"{MathF.Round((float)_data.RelAttention, 2)}%";
-                _relaxPercentText.text = $"{MathF.Round((float)_data.RelRelaxation, 2)}%";
-                _attentionRawText.text = $"{MathF.Round((float)_data.InstAttention, 2)}";
-                _relaxRawText.text = $"{MathF.Round((float)_data.InstRelaxation, 2)}";
-                _artSequenceText.text = $"{_artSequence}";
-                _artBothSidesText.text = $"{_artBothSides}";
-                _deltaPercentText.text = $"{MathF.Round((float)(_spectralData.Delta * 100), 2)}%";
-                _thetaPercentText.text = $"{MathF.Round((float)(_spectralData.Theta * 100), 2)}%";
-                _alphaPercentText.text = $"{MathF.Round((float)(_spectralData.Alpha * 100), 2)}%";
-                _betaPercentText.text = $"{MathF.Round((float)(_spectralData.Beta * 100), 2)}%";
-                _gammaPercentText.text = $"{MathF.Round((float)(_spectralData.Gamma * 100), 2)}%";
-                _alphaRawText.text = $"{(int)_spectVals.Alpha}";
-                _betaRawText.text = $"{(int)_spectVals.Beta}";
-                _progressBar.fillAmount = _percentPB / 100;*/
+                if (_scanning)
+                {
+                    sumRelAtt += (int) _data.InstAttention - (int) _data.InstRelaxation;
+                    count++;
+                }
             }
             yield return new WaitForSeconds(0.06f);
         }
@@ -80,17 +66,15 @@ public class EmotionalPage : MonoBehaviour
     {
         while (started)
         {
-           
+            _scanning = false;
             messageToPlayers.text = "Let's get started";
-            BrainBitController.Instance.StopSignal();
             yield return new WaitForSeconds(3);
             messageToPlayers.text = "Focus or attention";
-            BrainBitController.Instance.StartSignal((samples) => {
-                _emotionController.ProcessData(samples);
-            });
+            _scanning = true;
+            
             yield return new WaitForSeconds(5);
             sumRelAtt /= count;
-            //Debug.Log($"{sumRelAtt}");
+            Debug.Log($"{sumRelAtt}");
             
             Network.Instance.RequestAction(sumRelAtt);
             sumRelAtt = 0;
