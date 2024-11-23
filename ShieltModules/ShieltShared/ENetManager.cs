@@ -30,7 +30,7 @@ namespace ShieltShared
 
 		public static event ConnectedHandler Connected;
 
-		public delegate void DisconnectedHandler();
+		public delegate void DisconnectedHandler(Peer peer);
 
 		public static event DisconnectedHandler Disconnected;
 
@@ -87,7 +87,7 @@ namespace ShieltShared
 				case EventType.Disconnect:
 					if (!IsServer) IsConnected = false;
 
-					Disconnected?.Invoke();
+					Disconnected?.Invoke(_event.Peer);
 					Console.WriteLine("Peer disconnected");
 					break;
 
@@ -132,6 +132,11 @@ namespace ShieltShared
 			if (!IsServer && IsConnected) Server.DisconnectLater(0);
 			_host.Flush();
 			_host.Dispose();
+
+			IsInited = false;
+			IsConnected = false;
+			IsReady = false;
+			IsServer = false;
 		}
 	}
 }
