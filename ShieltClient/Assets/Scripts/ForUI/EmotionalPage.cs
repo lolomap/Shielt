@@ -19,8 +19,8 @@ public class EmotionalPage : MonoBehaviour
     private readonly object locker = new object();
     private EmotionsController _emotionController;
     private IEnumerator _updateEmotionalCoroutine;
-    private int sumRelAtt = 0;
-    private int count = 0;
+    private int maxRelax = 0;
+    private int maxAttention = 0;
     private bool _scanning = false;
     [SerializeField] private TMP_Text messageToPlayers;
 
@@ -53,8 +53,12 @@ public class EmotionalPage : MonoBehaviour
             {
                 if (_scanning)
                 {
-                    sumRelAtt += (int) _data.InstAttention - (int) _data.InstRelaxation;
-                    count++;
+                    //sumRelAtt += (int) _data.InstAttention - (int) _data.InstRelaxation;
+                    //count++;
+
+                    if (_data.RelRelaxation > maxRelax) { maxRelax = (int)_data.RelRelaxation; }
+                    if (_data.RelAttention > maxAttention) {  maxAttention = (int)_data.RelAttention; }
+
                 }
             }
             yield return new WaitForSeconds(0.06f);
@@ -69,16 +73,19 @@ public class EmotionalPage : MonoBehaviour
             _scanning = false;
             messageToPlayers.text = "Let's get started";
             yield return new WaitForSeconds(3);
-            messageToPlayers.text = "Focus or attention";
+            messageToPlayers.text = "Relax or attention";
             _scanning = true;
             
             yield return new WaitForSeconds(5);
-            sumRelAtt /= count;
-            Debug.Log($"{sumRelAtt}");
+
+            int value = Math.Max(maxRelax, maxAttention);
+            int res = value / 2;
+            bool isDef = value == maxRelax;
+            Debug.Log((isDef ? "DEF " : "ATK ") + $"{res}");
             
-            Network.Instance.RequestAction(sumRelAtt);
-            sumRelAtt = 0;
-            count = 0;
+            Network.Instance.RequestAction(res, isDef);
+            maxRelax = 0;
+            maxAttention = 0;
         }
     }
 
@@ -92,7 +99,6 @@ public class EmotionalPage : MonoBehaviour
         else
         {
             _emotionController.StartCalibration();
-            Debug.Log("Calibration finished");
             BrainBitController.Instance.StartSignal((samples) => {
                 _emotionController.ProcessData(samples);
             });

@@ -20,6 +20,11 @@ public class PlayerScript : MonoBehaviour, IPlayerActions
     {
         animator = GetComponent<Animator>();
     }
+
+    void Update()
+    {
+
+    }
     public void Attack()
     {
         animator.SetTrigger("attack");
