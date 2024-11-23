@@ -7,8 +7,12 @@ using Packet = ShieltShared.Packet;
 
 public class Network : MonoBehaviour
 {
+	public static Network Instance;
+	
 	private void Awake()
 	{
+		Instance = this;
+		
 		ENetManager.Connected += OnPlayerConnected;
 		ENetManager.PacketRecieved += ProcessPackets;
 		
@@ -21,11 +25,11 @@ public class Network : MonoBehaviour
 		ENetManager.Run();
 	}
 
-	public bool Connect()
+	public void Connect()
 	{
 		ENetManager.Connect(new(IPAddress.Parse("127.0.0.1"), 7777));
 		
-		return ENetManager.IsReady;
+		//return ENetManager.IsReady;
 	}
 
 	private static void ProcessPackets(Packet packet, Peer peer)
@@ -36,6 +40,8 @@ public class Network : MonoBehaviour
 			{
 				PlayersInfoStC payload = PacketManager.UnpackPayload<PlayersInfoStC>(packet);
 
+				Debug.Log("PL1: "+payload.Player1Health.ToString());
+				Debug.Log("PL2: "+payload.Player2Health.ToString());
 				break;
 			}
 		}
@@ -46,5 +52,13 @@ public class Network : MonoBehaviour
 		ConnectionRequestCtS info = new();
 		byte[] data = PacketManager.Pack(info);
 		ENetManager.Server.Send(0, data, PacketFlags.None);
+	}
+
+	public void RequestAction(int value)
+	{
+		PlayerActionCtS info = new() {IsDefend = value < 0, Value = Math.Abs(value)};
+		byte[] data = PacketManager.Pack(info);
+		
+		ENetManager.Server.Send(0, data, PacketFlags.Reliable);
 	}
 }

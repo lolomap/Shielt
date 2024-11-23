@@ -3,3 +3,5 @@
 /ShieltModules/ShieltServer/obj
 /ShieltModules/ShieltShared/bin
 /ShieltModules/ShieltShared/obj
+/ShieltModules/ShieltServer/bin
+/ShieltModules/ShieltServer/bin/Debug

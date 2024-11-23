@@ -14,6 +14,8 @@ public class SearchSensorsPage : MonoBehaviour
 
     [SerializeField] private ListView _devicesList;
 
+    [SerializeField] private TMP_Text _isConnectedText;
+    
     private const string _startSearchText = "Start Search";
     private const string _stopSearchText = "Stop Search";
 
@@ -77,6 +79,7 @@ public class SearchSensorsPage : MonoBehaviour
             if (state == SensorState.StateInRange) {
                 /*BackendManager.Instance.ToMenuPage();*/
                 Debug.Log("Device connected");
+                _isConnectedText.gameObject.SetActive(true);
             }
             else {
                 Debug.Log("Device not connected!");

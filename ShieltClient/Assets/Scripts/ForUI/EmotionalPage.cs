@@ -46,8 +46,10 @@ public class EmotionalPage : MonoBehaviour
             {
                 sumRelAtt += (int)_data.InstAttention - (int)_data.InstRelaxation;
                 count++;
-                Debug.Log($"Attention percentage: {MathF.Round((float)_data.RelAttention)}%");
-                Debug.Log($"Relax percentage: {MathF.Round((float)_data.RelRelaxation, 2)}%)");
+                //Debug.Log($"Attention percentage: {MathF.Round((float)_data.RelAttention)}%");
+                //Debug.Log($"Relax percentage: {MathF.Round((float)_data.RelRelaxation, 2)}%)");
+                
+                
                 /*_attentionPercentText.text = $"{MathF.Round((float)_data.RelAttention, 2)}%";
                 _relaxPercentText.text = $"{MathF.Round((float)_data.RelRelaxation, 2)}%";
                 _attentionRawText.text = $"{MathF.Round((float)_data.InstAttention, 2)}";
@@ -67,11 +69,25 @@ public class EmotionalPage : MonoBehaviour
         }
     }
 
-    public void UpdateEmotional()
+    private IEnumerator RangeUpdate()
+    {
+        while (started)
+        {
+            yield return new WaitForSeconds(5);
+            sumRelAtt /= count;
+            Debug.Log($"{sumRelAtt}");
+            Network.Instance.RequestAction(sumRelAtt);
+            sumRelAtt = 0;
+            count = 0;
+        }
+    }
+
+    public void StartScanning()
     {
         if (started)
         {
             BrainBitController.Instance.StopSignal();
+            started = false;
         }
         else
         {
@@ -80,10 +96,9 @@ public class EmotionalPage : MonoBehaviour
             BrainBitController.Instance.StartSignal((samples) => {
                 _emotionController.ProcessData(samples);
             });
+            started = true;
+            StartCoroutine(RangeUpdate());
         }
-        started = !started;
-        sumRelAtt = sumRelAtt / count;
-        Debug.Log($"{sumRelAtt}");
     }
 
     private void calibrationCallback(int progress)
