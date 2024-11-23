@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShieltShared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98c3716f597ded091ab3223ee70f9c3a7dbbc790")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52963c9115a19cc312980712813491c08415fcbc")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShieltShared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShieltShared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

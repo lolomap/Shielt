@@ -1,12 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TnHi7NYK232Qnli+0ZnlQ12DQqIZshlnXZRQmA0cptDPsK2kZ/FpxTwiEREwySVtTCTCLnre8geU2cHFLFNkwA==",
+  "dgSpecHash": "DSlfOmgIlY1msjMGj4W4hFBmaMX3w63+qu6Nuq7wMZHe+ri3YuMi6orvAPPidcw95USLpsTfauF6jb+73eVCwQ==",
   "success": true,
   "projectFilePath": "E:\\UnityProjects\\Shielt\\ShieltModules\\ShieltShared\\ShieltShared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lolom\\.nuget\\packages\\enet\\1.3.6.3\\enet.1.3.6.3.nupkg.sha512",
-    "C:\\Users\\lolom\\.nuget\\packages\\serilog\\4.1.0\\serilog.4.1.0.nupkg.sha512",
-    "C:\\Users\\lolom\\.nuget\\packages\\serilog.sinks.console\\6.0.0\\serilog.sinks.console.6.0.0.nupkg.sha512",
     "C:\\Users\\lolom\\.nuget\\packages\\structpacker\\1.0.8\\structpacker.1.0.8.nupkg.sha512"
   ],
   "logs": [

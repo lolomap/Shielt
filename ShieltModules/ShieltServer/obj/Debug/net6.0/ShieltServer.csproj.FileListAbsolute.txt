@@ -13,3 +13,9 @@ E:\UnityProjects\Shielt\ShieltModules\ShieltServer\obj\Debug\net6.0\refint\Shiel
 E:\UnityProjects\Shielt\ShieltModules\ShieltServer\obj\Debug\net6.0\ShieltServer.pdb
 E:\UnityProjects\Shielt\ShieltModules\ShieltServer\obj\Debug\net6.0\ShieltServer.genruntimeconfig.cache
 E:\UnityProjects\Shielt\ShieltModules\ShieltServer\obj\Debug\net6.0\ref\ShieltServer.dll
+E:\UnityProjects\Shielt\ShieltModules\ShieltServer\bin\Debug\net6.0\ENet.dll
+E:\UnityProjects\Shielt\ShieltModules\ShieltServer\bin\Debug\net6.0\RudolfKurka.StructPackerTools.dll
+E:\UnityProjects\Shielt\ShieltModules\ShieltServer\bin\Debug\net6.0\ShieltShared.dll
+E:\UnityProjects\Shielt\ShieltModules\ShieltServer\bin\Debug\net6.0\ShieltShared.pdb
+E:\UnityProjects\Shielt\ShieltModules\ShieltServer\obj\Debug\net6.0\ShieltServer.csproj.AssemblyReference.cache
+E:\UnityProjects\Shielt\ShieltModules\ShieltServer\obj\Debug\net6.0\ShieltServer.csproj.CopyComplete

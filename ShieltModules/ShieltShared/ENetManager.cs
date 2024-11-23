@@ -46,7 +46,7 @@ namespace ShieltShared
 			IsInited = true;
 			IsReady = true;
 
-			Log.Logger.Information("Networking is ready");
+			Console.WriteLine("Networking is ready");
 		}
 
 		public static void InitClient()
@@ -58,7 +58,7 @@ namespace ShieltShared
 
 			IsInited = true;
 
-			Log.Logger.Information("Networking is ready");
+			Console.WriteLine("Networking is ready");
 		}
 
 		public static void Connect(IPEndPoint address)
@@ -81,14 +81,14 @@ namespace ShieltShared
 
 					Connected?.Invoke();
 
-					Log.Logger.Information("Peer connected");
+					Console.WriteLine("Peer connected");
 					break;
 
 				case EventType.Disconnect:
 					if (!IsServer) IsConnected = false;
 
 					Disconnected?.Invoke();
-					Log.Logger.Warning("Peer disconnected");
+					Console.WriteLine("Peer disconnected");
 					break;
 
 				case EventType.Receive:

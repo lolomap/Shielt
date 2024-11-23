@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using ENet;
-using Serilog.Core;
 using ShieltShared;
 using Packet = ShieltShared.Packet;
 
@@ -51,7 +50,7 @@ public class LobbyManager
 
 		_player2.Connection ??= peer;
 		
-		Log.Logger.Warning("Third player tried to connect!");
+		Console.WriteLine("Third player tried to connect!");
 		peer.DisconnectLater(0);
 	}
 

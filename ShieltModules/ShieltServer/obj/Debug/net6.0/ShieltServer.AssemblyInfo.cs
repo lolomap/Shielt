@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShieltServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52963c9115a19cc312980712813491c08415fcbc")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShieltServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShieltServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
