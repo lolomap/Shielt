@@ -141,7 +141,10 @@ public class LobbyManager
 			_player2.Health -= pl2IncomeDamage;
 		}
 
-		_player1.Health = Math.Clamp(_player1.Health, 0, 100);
+		pl1IncomeDamage = Math.Clamp(pl1IncomeDamage, 0, 100);
+        pl2IncomeDamage = Math.Clamp(pl2IncomeDamage, 0, 100);
+
+        _player1.Health = Math.Clamp(_player1.Health, 0, 100);
 		_player2.Health = Math.Clamp(_player2.Health, 0, 100);
 		
 		_player1.LastAction = null;
