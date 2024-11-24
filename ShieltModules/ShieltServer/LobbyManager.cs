@@ -133,16 +133,18 @@ public class LobbyManager
 		if (!pl2PowAt) pl1IncomeDamage -= player1Defend;
 
 		if (pl1PowDef) pl2IncomeDamage += player2Defend - player1Attack; 
-		if (pl2PowDef) pl1IncomeDamage += player1Defend - player2Attack; 
-		
-		if (!(pl1PowAt && pl2PowDef || pl2PowAt && pl1PowDef))
+		if (pl2PowDef) pl1IncomeDamage += player1Defend - player2Attack;
+
+        pl1IncomeDamage = Math.Clamp(pl1IncomeDamage, 0, 100);
+        pl2IncomeDamage = Math.Clamp(pl2IncomeDamage, 0, 100);
+
+        if (!(pl1PowAt && pl2PowDef || pl2PowAt && pl1PowDef))
 		{
 			_player1.Health -= pl1IncomeDamage;
 			_player2.Health -= pl2IncomeDamage;
 		}
 
-		pl1IncomeDamage = Math.Clamp(pl1IncomeDamage, 0, 100);
-        pl2IncomeDamage = Math.Clamp(pl2IncomeDamage, 0, 100);
+		
 
         _player1.Health = Math.Clamp(_player1.Health, 0, 100);
 		_player2.Health = Math.Clamp(_player2.Health, 0, 100);
