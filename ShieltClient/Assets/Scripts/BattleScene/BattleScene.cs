@@ -51,19 +51,24 @@ namespace BattleScene
 				}
 
 				if (players.Player1IsDefend)
-					Player1.Defend();
-				else Player1.Attack();
-				if (players.Player2IsDefend)
-					Player2.Defend();
+					if (players.Player1IsPowered) Player1.PowerDefend();
+					else Player1.Defend();
 				else
-					Player2.Attack();
+					if (players.Player1IsPowered) Player1.PowerAttack();
+					else Player1.Attack();
+				if (players.Player2IsDefend)
+					if (players.Player2IsPowered) Player2.PowerDefend();
+					else Player2.Defend();
+				else
+					if (players.Player2IsPowered) Player2.PowerAttack();
+					else Player2.Attack();
 			};
 
 		}
 
 		public void DisplayWinner(String winner)
 		{
-			WinnerText.text = $"The winner is: + \n + {winner}!";
+			WinnerText.text = $"The winner is:\n{winner}!";
 		}
 
 		public void ExitGame()

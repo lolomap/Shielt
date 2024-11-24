@@ -40,7 +40,7 @@ public class Network : MonoBehaviour
 		//return ENetManager.IsReady;
 	}
 
-	private static void ProcessPackets(Packet packet, Peer peer)
+	private void ProcessPackets(Packet packet, Peer peer)
 	{
 		switch (packet.TypeId)
 		{
@@ -56,6 +56,7 @@ public class Network : MonoBehaviour
 				else
 				{
 					SelfNickname = payload.Player1Nickname != SelfNickname ? payload.Player1Nickname : payload.Player2Nickname;
+					UpdatePlayers?.Invoke(payload);
 
 					Instance._isColletedInfo = true;
 				}
