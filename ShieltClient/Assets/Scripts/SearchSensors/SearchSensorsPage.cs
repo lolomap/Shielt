@@ -46,18 +46,12 @@ public class SearchSensorsPage : MonoBehaviour
         if (!isSearching)
         {
 #if UNITY_ANDROID
-            if (SystemInfo.operatingSystem.Contains("31") ||
-                SystemInfo.operatingSystem.Contains("32") ||
-                SystemInfo.operatingSystem.Contains("33"))
-            {
-                Permission.RequestUserPermission("android.permission.BLUETOOTH_SCAN");
-                Permission.RequestUserPermission("android.permission.BLUETOOTH_CONNECT");
-            }
-            else
-            {
-                Permission.RequestUserPermission("android.permission.ACCESS_FINE_LOCATION");
-                Permission.RequestUserPermission("android.permission.ACCESS_COARSE_LOCATION");
-            }
+            Permission.RequestUserPermission("android.permission.BLUETOOTH");
+            Permission.RequestUserPermission("android.permission.BLUETOOTH_ADMIN");
+            Permission.RequestUserPermission("android.permission.BLUETOOTH_SCAN");
+            Permission.RequestUserPermission("android.permission.BLUETOOTH_CONNECT");
+            Permission.RequestUserPermission("android.permission.ACCESS_FINE_LOCATION");
+            Permission.RequestUserPermission("android.permission.ACCESS_COARSE_LOCATION");
 #endif
 
             isSearching = true;
